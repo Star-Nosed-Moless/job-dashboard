@@ -13,7 +13,10 @@ const AddJobModal = (props) => {
   const [selectedStatus, setSelectedStatus] = useState(''); 
   const [jobLocation, setJobLocation] = useState('');
   const [jobUrl, setJobUrl] = useState('');
-  const [salaryRange, setSalaryRange] = useState('');
+  const [minSalary, setMinSalary] = useState('');
+  const [maxSalary, setMaxSalary] = useState('');
+  const [level, setLevel] = useState('');
+  const [hours, setHours] = useState('');
 
   // declare 'createJobMutation' func to add job to database
   // const createJobMutation = useMutation(api.createJob, {
@@ -34,7 +37,10 @@ const AddJobModal = (props) => {
     setCompanyName('');
     setJobLocation('');
     setJobUrl('');
-    setSalaryRange('');
+    setMinSalary('');
+    setMaxSalary('');
+    setLevel('');
+    setHours('');
     props.onHide();
   };
 
@@ -47,13 +53,16 @@ const AddJobModal = (props) => {
       'status': selectedStatus,
       'location': jobLocation,
       'url': jobUrl,
-      'salary': salaryRange
+      'minSalary': minSalary,
+      'maxSalary': maxSalary,
+      'level': level,
+      'hours': hours
     };
     // createJobMutation.mutate(payload);
   };
 
   return (
-    <Modal {...props} size='lg' arialabelledby='SearchModal' onHide={clear}>
+    <Modal {...props} size='lg' aria-labelled='SearchModal' onHide={clear}>
       <Form onSubmit={save}>
         <Modal.Header closeButton>
           <Modal.Title id='addJobModal'>
@@ -63,7 +72,7 @@ const AddJobModal = (props) => {
 
         <Modal.Body>
           <Form.Group controlId='inputJobTitle'>
-            <Form.Label>Job Title</Form.Label>
+            <Form.Label>Job Title :</Form.Label>
             <Form.Control 
               type='text'
               name='jobTitle'
@@ -75,7 +84,7 @@ const AddJobModal = (props) => {
           </Form.Group>
 
           <Form.Group controlId='inputCompany'>
-            <Form.Label>Company Name</Form.Label>
+            <Form.Label>Company Name :</Form.Label>
             <Form.Control
               type='text'
               name='companyName'
@@ -86,8 +95,32 @@ const AddJobModal = (props) => {
             />
           </Form.Group>
 
+          <Form.Group controlId='inputLevel'>
+            <Form.Label>Level :</Form.Label>
+            <Form.Control
+              type='text'
+              name='inputLevel'
+              placeholder='Enter job level'
+              value={level}
+              required
+              onChange={(e) => setLevel(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group controlId='inputHours'>
+            <Form.Label>Hours :</Form.Label>
+            <Form.Control
+              type='text'
+              name='inputHours'
+              placeholder='Enter hours'
+              value={hours}
+              required
+              onChange={(e) => setHours(e.target.value)}
+            />
+          </Form.Group>
+
           <Form.Group controlId='appStatus'>
-            <Form.Label>Application Status</Form.Label>
+            <Form.Label>Application Status :</Form.Label>
             <Form.Select
               aria-label='select'
               value={selectedStatus}
@@ -107,7 +140,7 @@ const AddJobModal = (props) => {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Location</Form.Label>
+            <Form.Label>Location :</Form.Label>
             <Form.Control
               type='text'
               name='jobLocation'
@@ -119,7 +152,7 @@ const AddJobModal = (props) => {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Job Post Url</Form.Label>
+            <Form.Label>Job Post Url :</Form.Label>
             <Form.Control
               type='text'
               name='jobUrl'
@@ -130,13 +163,24 @@ const AddJobModal = (props) => {
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Salary Range</Form.Label>
+            <Form.Label>Min Salary :</Form.Label>
             <Form.Control
               type='text'
-              name='salaryRange'
-              placeholder='Enter a salary range'
-              value={salaryRange}
-              onChange={(e) => setSalaryRange(e.target.value)}
+              name='minSalary'
+              placeholder='Enter a min salary'
+              value={minSalary}
+              onChange={(e) => setMinSalary(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Max Salary :</Form.Label>
+            <Form.Control
+              type='text'
+              name='maxSalary'
+              placeholder='Enter a max salary'
+              value={maxSalary}
+              onChange={(e) => setMaxSalary(e.target.value)}
             />
           </Form.Group>
         </Modal.Body>
