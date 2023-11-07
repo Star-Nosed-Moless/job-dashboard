@@ -20,7 +20,7 @@ module.exports = {
     hot: true,
     liveReload: true,
     proxy: {
-      '/api/**': {
+      '/api/listing/**': {
         // so all client side request to server need to be prefaced with api/
         target: 'http://localhost:3000/',
         secure: false,
@@ -45,6 +45,11 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
     ],

@@ -7,15 +7,6 @@ const CategoryFilterContainer = () => {
     <Container className="filterDiv my-3 p-3 bg-light rounded">
       <Stack direction="horizontal" gap={3}>
 
-          <Form.Label>Company: </Form.Label>
-          <Form.Select id="Company">
-            <option>None</option>
-            <option>Google</option>
-            <option>Apple</option>
-            <option>Linkedin</option>
-            <option>Github</option>
-          </Form.Select>
-
           <Form.Label>Title: </Form.Label>
           <Form.Select id="Title">
             <option>None</option>
@@ -23,6 +14,15 @@ const CategoryFilterContainer = () => {
             <option>Frontend Eng</option>
             <option>Backend Eng</option>
             <option>Fullstack Eng</option>
+          </Form.Select>
+
+          <Form.Label>Company: </Form.Label>
+          <Form.Select id="Company">
+            <option>None</option>
+            <option>Google</option>
+            <option>Apple</option>
+            <option>Linkedin</option>
+            <option>Github</option>
           </Form.Select>
 
           <Form.Label>Level: </Form.Label>
@@ -35,13 +35,22 @@ const CategoryFilterContainer = () => {
           </Form.Select>
 
           <Form.Label>Salary: </Form.Label>
-          <Form.Select id="Salary">
+          <Form.Select id="minSalary">
             <option>None</option>
             <option>$50,000+</option>
             <option>$100,000+</option>
             <option>$150,000+</option>
             <option>$200,000+</option>
           </Form.Select>
+
+          {/* <Form.Label>Max Salary: </Form.Label>
+          <Form.Select id="maxSalary">
+            <option>None</option>
+            <option>$100,000</option>
+            <option>$150,000</option>
+            <option>$200,000</option>
+            <option>$250,000+</option>
+          </Form.Select> */}
 
           <Form.Label>Type: </Form.Label>
           <Form.Select id="Type">
